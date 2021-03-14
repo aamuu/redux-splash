@@ -1,11 +1,17 @@
+import { Provider } from 'react-redux'
+import configureStore from './store'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
+const store = configureStore()
+
 function App() {
   return (
-    <div className="App">
-      Hello World!!
+    <Provider store={store}>
+      <div className="App">
+        Hello World!!
     </div>
+    </Provider>
   );
 }
 
