@@ -1,8 +1,9 @@
 import { IMAGES } from './../actions/types';
 
 const initialState = {
-  images: [],
+  gallery: [],
   loading: false,
+  page: 1,
 };
 
 export default function imageReducer(state = initialState, action) {
@@ -10,7 +11,12 @@ export default function imageReducer(state = initialState, action) {
     case IMAGES.LOAD:
       return { ...state, loading: true };
     case IMAGES.LOAD_SUCCESS:
-      return { ...state, ...action.payload };
+      return {
+        ...state,
+        loading: false,
+        page: state.page + 1,
+        gallery: action.payload,
+      };
     case IMAGES.LOAD_FAIL:
       return { ...state, ...action.payload };
     default:

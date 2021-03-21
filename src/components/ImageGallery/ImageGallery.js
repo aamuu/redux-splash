@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
+import Image from '../Image/Image';
+import { connect } from 'react-redux';
+import { loadImages } from '../../actions/image';
+class ImageGallery extends Component {
+  componentDidMount() {
+    this.props.loadImages();
+  }
 
-export default class ImageGallery extends Component {
   render() {
+    const { gallery } = this.props.images;
     return (
       <div className='container'>
         <div className='row'>
-          <div className='col-lg-4'></div>
-          <div className='col-lg-4'></div>
-          <div className='col-lg-4'></div>
+          {gallery.map((image) => (
+            <Image
+              id={image.id}
+              urls={image.urls.small}
+              user={image.user.username}
+            />
+          ))}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  images: state.images,
+});
+
+export default connect(mapStateToProps, { loadImages })(ImageGallery);

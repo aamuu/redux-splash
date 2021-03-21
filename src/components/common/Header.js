@@ -8,7 +8,7 @@ export default function Header() {
       <nav className='navbar header'>
         <div className='container-fluid'>
           <i className='far fa-2x fa-images' />{' '}
-          <span className='logo'>Image Gallery</span>
+          <span className='logo-text'>Image Gallery</span>
         </div>
       </nav>
     </React.Fragment>
